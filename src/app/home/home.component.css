@@ -28,6 +28,23 @@ mat-form-field {
   color: #666;
 }
 
+/* Styling za reset dugme kontejner */
+.reset-button-container {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.reset-button-container button {
+  background-color: #1976d2 !important;
+  color: white !important;
+  min-width: 120px;
+}
+
+.reset-button-container button:hover {
+  background-color: #1565c0 !important;
+}
+
 /* Movies container sa grid layoutom */
 .movies-container {
   display: grid;

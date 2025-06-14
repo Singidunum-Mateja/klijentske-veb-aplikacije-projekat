@@ -6,7 +6,7 @@
   <mat-form-field>
     <input
       matInput
-      placeholder="Pretraga po nazivu"
+      placeholder="Traži po nazivu"
       [(ngModel)]="searchTerm"
       (ngModelChange)="applyFilters()"
       name="searchTerm"
@@ -55,9 +55,39 @@
     </mat-select>
   </mat-form-field>
 
-  <!-- slider - vreme trajanja -->
+  <!-- Filter za pocetni datum -->
+  <mat-form-field>
+    <mat-label>Datum od</mat-label>
+    <input
+      matInput
+      [matDatepicker]="startDatePicker"
+      [(ngModel)]="startDate"
+      (ngModelChange)="applyFilters()"
+      name="startDate"
+      placeholder="Odaberite datum"
+    />
+    <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #startDatePicker></mat-datepicker>
+  </mat-form-field>
+
+  <!-- Filter za krajnji datum -->
+  <mat-form-field>
+    <mat-label>Datum do</mat-label>
+    <input
+      matInput
+      [matDatepicker]="endDatePicker"
+      [(ngModel)]="endDate"
+      (ngModelChange)="applyFilters()"
+      name="endDate"
+      placeholder="Odaberite datum"
+    />
+    <mat-datepicker-toggle matIconSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #endDatePicker></mat-datepicker>
+  </mat-form-field>
+
+  <!-- Popravljen slider - uklonjen ngModel sa mat-slider elementa -->
   <div class="slider-container">
-    <label for="durationSlider">Maksimalno trajanje: {{ maxDuration }} min</label>
+    <label for="durationSlider">Maksimalno trajanje: {{ maxDuration }} minuta</label>
     <mat-slider
       id="durationSlider"
       [min]="0"
@@ -71,6 +101,13 @@
         name="maxDuration"
       />
     </mat-slider>
+  </div>
+
+  <!-- Dugme za resetovanje svih filtera -->
+  <div class="reset-button-container">
+    <button mat-raised-button color="primary" (click)="resetFilters()">
+      Resetuj Filtere
+    </button>
   </div>
 </div>
 
