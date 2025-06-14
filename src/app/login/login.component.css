@@ -1,0 +1,79 @@
+/* This CSS should be used for both login.component.css and signup.component.css */
+
+/* Glavni kontejner za authentication card */
+.auth-card {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Stilizovanje zaglavlja karte */
+.auth-card mat-card-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Stilizovanje naslova */
+.auth-card h1 {
+  color: #3f51b5;
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Sva input polja da budu preko cele širine */
+.full-width {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* Kontejner za dugmad na dnu karte */
+mat-card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 20px;
+}
+
+/* Stilizovanje dugmadi u akcijama */
+mat-card-actions button,
+mat-card-actions a {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+}
+
+/* Glavni akcijski dugmad (Login/Signup) */
+mat-card-actions button:first-child {
+  background-color: #3f51b5;
+  color: white;
+}
+
+mat-card-actions button:first-child:hover {
+  background-color: #303f9f;
+}
+
+/* Sekundarni linkovi */
+mat-card-actions a {
+  color: #3f51b5;
+  text-decoration: none;
+  border: 1px solid #3f51b5;
+}
+
+mat-card-actions a:hover {
+  background-color: #f5f5f5;
+}
+
+/* Stilizovanje ikona u dugmadima */
+mat-card-actions i {
+  margin-right: 8px;
+}
+
+/* Responsive dizajn za manje ekrane */
+@media (max-width: 480px) {
+  .auth-card {
+    margin: 20px;
+    max-width: none;
+  }
+}

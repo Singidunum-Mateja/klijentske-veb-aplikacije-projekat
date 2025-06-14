@@ -1,0 +1,94 @@
+<div *ngIf="isLoading">
+  <app-loading></app-loading>
+</div>
+
+<div *ngIf="!isLoading && movie" class="movie-details-container">
+  <!-- Glavni sadrzaj o filmu -->
+  <div class="movie-info">
+    <!-- Leva strana - slika filma -->
+    <div class="movie-poster">
+      <img [src]="movie.imageUrl" [alt]="movie.title" />
+    </div>
+    
+    <!-- Desna strana - informacije o filmu -->
+    <div class="movie-details">
+      <!-- Naslov filma - veci font -->
+      <h1 class="movie-title">{{ movie.title }}</h1>
+      
+      <!-- Ostale informacije o filmu -->
+      <div class="movie-meta">
+        <p><strong>Datum izlaska:</strong> {{ movie.releaseDate | date:'dd.MM.yyyy' }}</p>
+        <p><strong>Trajanje:</strong> {{ movie.duration }} minuta</p>
+        
+        <!-- zanrovi kao chips -->
+        <div class="genres-section">
+          <strong>Žanrovi:</strong>
+          <mat-chip-set class="genres-chips">
+            <mat-chip *ngFor="let genre of movie.genres">{{ genre.name }}</mat-chip>
+          </mat-chip-set>
+        </div>
+        
+        <p><strong>Režiser:</strong> {{ getDirectorsString() }}</p>
+        <p><strong>Uloge:</strong> {{ getActorsString() }}</p>
+        
+        <!-- Opis filma -->
+        <div class="movie-description" *ngIf="movie?.description">
+            <strong>Opis:</strong>
+            <p>{{ movie.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Sekcija za projekcije -->
+  <div class="projections-section">
+    <h2 class="projections-title">Projekcije</h2>
+    
+    <!-- Poruka ako je film vec rezervisan -->
+    <div *ngIf="isProjectionReserved()" class="reservation-notice">
+      <mat-card color="accent">
+        <mat-card-content>
+          <p><strong>Već imate rezervisanu projekciju za ovaj film!</strong></p>
+          <p>Možete pregledati svoju rezervaciju u <button mat-raised-button color="primary" routerLink="/cart">korpi</button>.</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    
+    <div class="projections-container">
+      <mat-card 
+        *ngFor="let projection of projections" 
+        class="projection-card"
+        [class.disabled]="isProjectionReserved()"
+        (click)="!isProjectionReserved() && reserveProjection(projection)"
+      >
+        <mat-card-content>
+          <div class="projection-time">
+            <mat-icon>schedule</mat-icon>
+            <span>{{ projection.time }}</span>
+          </div>
+          
+          <div class="projection-hall">
+            <mat-icon>theaters</mat-icon>
+            <span>{{ projection.hall }}</span>
+          </div>
+          
+          <div class="projection-price">
+            <mat-icon>monetization_on</mat-icon>
+            <span>{{ projection.price }} RSD</span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<!-- Poruka ako film nije pronadjen -->
+<div *ngIf="!isLoading && !movie" class="error-message">
+  <mat-card>
+    <mat-card-content>
+      <h2>Film nije pronađen</h2>
+      <p>Film sa zahtevanih ID-jem ne postoji.</p>
+      <button mat-raised-button color="primary" routerLink="/">Vrati se na početnu</button>
+    </mat-card-content>
+  </mat-card>
+</div>

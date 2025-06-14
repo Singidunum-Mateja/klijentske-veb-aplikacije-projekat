@@ -1,0 +1,226 @@
+/* Glavni kontejner profila */
+.profile-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Korisnicke informacije sekcija */
+.user-info-section {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+/* Header sa ikonom i imenom */
+.user-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e0e0e0;
+  overflow: visible; 
+}
+
+.user-icon {
+  font-size: 48px;
+  color: #3f51b5;
+  margin-right: 20px;
+  flex-shrink: 0;  
+}
+
+.user-name {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Sekcije za promene */
+.password-section,
+.info-section {
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border-left: 4px solid #3f51b5;
+}
+
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Kontejneri za polja */
+.password-fields,
+.info-fields-row1,
+.info-fields-row2 {
+  display: flex;
+  gap: 15px;
+  align-items: flex-end;
+  margin-bottom: 15px;
+}
+
+.password-fields {
+  flex-wrap: wrap;
+}
+
+.info-fields-row1,
+.info-fields-row2 {
+  flex-wrap: wrap;
+}
+
+/* Stilovi za polja */
+.field-container {
+  flex: 1;
+  min-width: 200px;
+}
+
+.field-container mat-form-field {
+  width: 100%;
+}
+
+/* Stilovi za dugmad */
+.change-button {
+  background-color: #3f51b5;
+  color: white;
+  margin-left: 15px;
+  height: 40px;
+  min-width: 100px;
+}
+
+.change-button:hover {
+  background-color: #303f9f;
+}
+
+/* Stilovi za tabele */
+.movies-section {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.section-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+.movies-table-container {
+  margin-top: 20px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.movies-table {
+  width: 100%;
+}
+
+.table-header {
+  background-color: #3f51b5;
+  color: black;
+  font-weight: 600;
+  padding: 15px 20px;
+  text-align: left;
+}
+
+.table-cell {
+  padding: 15px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  vertical-align: middle;
+}
+
+/* Stilovi za zvezde */
+.stars-container {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.star {
+  font-size: 24px;
+  color: #ddd;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.star.filled {
+  color: #ffd700;
+}
+
+.star:hover {
+  color: #ffed4e;
+}
+
+/* Poruka kada nema filmova */
+.no-movies {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  font-style: italic;
+}
+
+/* Stilovi za obavestenja */
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 10px 15px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  border: 1px solid #c3e6cb;
+}
+
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px 15px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  border: 1px solid #f5c6cb;
+}
+
+/* Responsive stilovi */
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 10px;
+  }
+  
+  .user-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .user-icon {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  
+  .password-fields,
+  .info-fields-row1,
+  .info-fields-row2 {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .change-button {
+    margin-left: 0;
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  .table-header,
+  .table-cell {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+}

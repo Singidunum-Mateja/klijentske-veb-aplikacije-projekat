@@ -1,2 +1,27 @@
+<mat-toolbar color="primary">
+  <span class="logo">🎬 iCinema</span>
+  <span class="spacer"></span>
 
-<router-outlet />
+  <!-- Home dugme uvek vidljivo -->
+  <a mat-button routerLink="/">Početna</a>
+ 
+  <!-- Dugmad koja se prikazuju samo kada je korisnik ulogovan -->
+  <button mat-icon-button routerLink="/cart" *ngIf="isUserLoggedIn()" title="Korpa">
+    <mat-icon>shopping_cart</mat-icon>
+  </button>
+
+  <button mat-icon-button routerLink="/profile" *ngIf="isUserLoggedIn()" title="Profil">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+
+  <button mat-button (click)="logout()" *ngIf="isUserLoggedIn()">
+    Odjavi se
+  </button>
+
+  <!-- Login dugme se prikazuje samo kada korisnik NIJE ulogovan -->
+  <a mat-button routerLink="/login" *ngIf="!isUserLoggedIn()">Prijavi se</a>
+</mat-toolbar>
+
+<div class="main-content">
+  <router-outlet></router-outlet>
+</div>

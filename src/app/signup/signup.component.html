@@ -1,0 +1,71 @@
+<mat-card class="auth-card">
+    <mat-card-header>
+        <h1>Registracija</h1>
+    </mat-card-header>
+    <mat-card-content>
+        <!-- Email polje - obavezno polje za registraciju -->
+        <mat-form-field class="full-width">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="Unesite vaš email..." [(ngModel)]="email" required>
+        </mat-form-field>
+
+        <!-- Ime korisnika -->
+        <mat-form-field class="full-width">
+            <mat-label>Ime</mat-label>
+            <input type="text" matInput placeholder="Unesite vaše ime..." [(ngModel)]="firstName">
+        </mat-form-field>
+
+        <!-- Prezime korisnika -->
+        <mat-form-field class="full-width">
+            <mat-label>Prezime</mat-label>
+            <input type="text" matInput placeholder="Unesite vaše prezime..." [(ngModel)]="lastName">
+        </mat-form-field>
+
+        <!-- Telefon korisnika -->
+        <mat-form-field class="full-width">
+            <mat-label>Telefon</mat-label>
+            <input type="tel" matInput placeholder="Unesite vaš broj telefona..." [(ngModel)]="phone">
+        </mat-form-field>
+
+        <!-- Adresa korisnika -->
+        <mat-form-field class="full-width">
+            <mat-label>Adresa</mat-label>
+            <input type="text" matInput placeholder="Unesite vašu adresu..." [(ngModel)]="address">
+        </mat-form-field>
+
+        <!-- Password polje - obavezno za registraciju -->
+        <mat-form-field class="full-width">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput placeholder="Unesite password..." [(ngModel)]="password" required>
+        </mat-form-field>
+
+        <!-- Potvrda password-a -->
+        <mat-form-field class="full-width">
+            <mat-label>Ponovite Password</mat-label>
+            <input type="password" matInput placeholder="Ponovite password..." [(ngModel)]="repeatPassword" required>
+        </mat-form-field>
+
+        <!-- Omiljeni zanrovi filmova - korisnik moze da bira vise žanrova -->
+        <mat-form-field class="full-width">
+            <mat-label>Omiljeni žanrovi filmova</mat-label>
+            <mat-select [(ngModel)]="selectedGenres" multiple>
+                <mat-option *ngFor="let genre of genreList" [value]="genre">
+                    {{genre}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-card-content>
+
+    <!-- Dugmad za akcije -->
+    <mat-card-actions>
+        <!-- Dugme za registraciju -->
+        <button type="button" mat-button (click)="doSignup()">
+            <i class="fa-solid fa-user-plus"></i> Registruj se
+        </button>
+        
+        <!-- Link za prelazak na login stranicu -->
+        <a mat-button routerLink="/login">
+            <i class="fa-solid fa-sign-in-alt"></i> Već imam nalog
+        </a>
+    </mat-card-actions>
+</mat-card>

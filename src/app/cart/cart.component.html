@@ -1,0 +1,81 @@
+<div class="cart-container">
+  <div class="cart-content">
+    <!-- Naslov korpe -->
+    <h1 class="cart-title">Korpa</h1>
+    
+    <!-- Tabela sa rezervisanim projekcijama -->
+    <div class="cart-table-container" *ngIf="cartItems.length > 0">
+      <table mat-table [dataSource]="cartItems" class="cart-table">
+        
+        <!-- Kolona za naslov filma -->
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef class="table-header">Naslov</th>
+          <td mat-cell *matCellDef="let item" class="table-cell">{{ item.movieTitle }}</td>
+        </ng-container>
+
+        <!-- Kolona za duzinu trajanja -->
+        <ng-container matColumnDef="duration">
+          <th mat-header-cell *matHeaderCellDef class="table-header">Dužina trajanja filma</th>
+          <td mat-cell *matCellDef="let item" class="table-cell">{{ item.movieDuration }} min</td>
+        </ng-container>
+
+        <!-- Kolona za pocetak projekcije -->
+        <ng-container matColumnDef="projection">
+          <th mat-header-cell *matHeaderCellDef class="table-header">Početak projekcije</th>
+          <td mat-cell *matCellDef="let item" class="table-cell">
+            {{ formatProjectionDateTime(item.projectionDate, item.projectionTime) }}
+          </td>
+        </ng-container>
+
+        <!-- Kolona za cenu karte -->
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef class="table-header">Cena karte</th>
+          <td mat-cell *matCellDef="let item" class="table-cell">{{ item.price }} RSD</td>
+        </ng-container>
+
+        <!-- Kolona za potvrdu (dugmad) -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef class="table-header">Potvrda</th>
+          <td mat-cell *matCellDef="let item" class="table-cell actions-cell">
+            <div class="action-buttons">
+              <button mat-raised-button 
+                      color="primary" 
+                      class="pay-button"
+                      (click)="payForReservation(item)">
+                Plati
+              </button>
+              <button mat-raised-button 
+                      color="warn" 
+                      class="cancel-button"
+                      (click)="cancelReservation(item)">
+                Otkaži
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Prikaz header-a i redova tabele -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+
+    <!-- Poruka kada je korpa prazna -->
+    <div class="empty-cart" *ngIf="cartItems.length === 0">
+      <mat-card>
+        <mat-card-content>
+          <h2>Vaša korpa je prazna</h2>
+          <p>Nema rezervisanih projekcija.</p>
+          <button mat-raised-button color="primary" routerLink="/">
+            Vrati se na početnu
+          </button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- Ukupna cena -->
+    <div class="total-price" *ngIf="cartItems.length > 0">
+      <h2>Ukupna cena: {{ totalPrice }} RSD</h2>
+    </div>
+  </div>
+</div>

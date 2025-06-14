@@ -1,0 +1,91 @@
+<div *ngIf="isLoading">
+  <app-loading></app-loading>
+</div>
+
+<div *ngIf="!isLoading" class="filter-container">
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Pretraga po nazivu"
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="applyFilters()"
+      name="searchTerm"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Žanrovi</mat-label>
+    <mat-select
+      multiple
+      [(ngModel)]="selectedGenres"
+      (selectionChange)="applyFilters()"
+      name="genres"
+    >
+      <mat-option *ngFor="let genre of genres" [value]="genre.id">
+        {{ genre.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Glumci</mat-label>
+    <mat-select
+      multiple
+      [(ngModel)]="selectedActors"
+      (selectionChange)="applyFilters()"
+      name="actors"
+    >
+      <mat-option *ngFor="let actor of actors" [value]="actor.id">
+        {{ actor.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Režiseri</mat-label>
+    <mat-select
+      multiple
+      [(ngModel)]="selectedDirectors"
+      (selectionChange)="applyFilters()"
+      name="directors"
+    >
+      <mat-option *ngFor="let director of directors" [value]="director.id">
+        {{ director.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- slider - vreme trajanja -->
+  <div class="slider-container">
+    <label for="durationSlider">Maksimalno trajanje: {{ maxDuration }} min</label>
+    <mat-slider
+      id="durationSlider"
+      [min]="0"
+      [max]="300"
+      [step]="5"
+    >
+      <input 
+        matSliderThumb 
+        [(ngModel)]="maxDuration" 
+        (ngModelChange)="applyFilters()" 
+        name="maxDuration"
+      />
+    </mat-slider>
+  </div>
+</div>
+
+<div *ngIf="!isLoading" class="movies-container">
+  <mat-card *ngFor="let movie of filteredMovies">
+    <img mat-card-image [src]="movie.imageUrl" alt="{{ movie.title }}" />
+    <mat-card-title>{{ movie.title }}</mat-card-title>
+    <mat-card-content>
+      <p>Datum: {{ movie.releaseDate | date }}</p>
+      <p>Trajanje: {{ movie.duration }} min</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" [routerLink]="['/details', movie.id]">
+        Pogledaj Detalje
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

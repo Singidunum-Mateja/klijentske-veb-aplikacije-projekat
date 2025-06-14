@@ -1,0 +1,157 @@
+/* Glavni kontejner za korpu - centriran vertikalno i horizontalno */
+.cart-container {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Sadrzaj korpe */
+.cart-content {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Naslov korpe */
+.cart-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Kontejner tabele */
+.cart-table-container {
+  margin-bottom: 30px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Tabela stilovi */
+.cart-table {
+  width: 100%;
+}
+
+/* Header celije tabele */
+.table-header {
+  background-color: #3f51b5;
+  color: black;
+  font-weight: 600;
+  padding: 15px 20px;
+  text-align: left;
+}
+
+/* Obicne celije tabele */
+.table-cell {
+  padding: 15px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  vertical-align: middle;
+}
+
+/* Posebno stilizovanje za celiju sa dugmadima */
+.actions-cell {
+  text-align: center;
+}
+
+/* Kontejner za dugmad */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Plavo dugme za placanje */
+.pay-button {
+  background-color: #2196f3;
+  color: white;
+  min-width: 80px;
+}
+
+.pay-button:hover {
+  background-color: #1976d2;
+}
+
+/* Crveno dugme za otkazivanje */
+.cancel-button {
+  background-color: #f44336;
+  color: white;
+  min-width: 80px;
+}
+
+.cancel-button:hover {
+  background-color: #d32f2f;
+}
+
+/* Stilovi za ukupnu cenu */
+.total-price {
+  text-align: center;
+  margin-top: 20px;
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.total-price h2 {
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Stilovi za praznu korpu */
+.empty-cart {
+  text-align: center;
+}
+
+.empty-cart mat-card {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.empty-cart h2 {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.empty-cart p {
+  color: #888;
+  margin-bottom: 20px;
+}
+
+/* Responsive stilovi za manje ekrane */
+@media (max-width: 768px) {
+  .cart-container {
+    min-height: 70vh;
+    padding: 10px;
+  }
+  
+  .cart-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .table-header,
+  .table-cell {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .pay-button,
+  .cancel-button {
+    min-width: 60px;
+    font-size: 0.8rem;
+  }
+}
